@@ -1,0 +1,24 @@
+dist: xenial
+services:
+  - docker
+
+before_install:
+  - docker build -t gutku10/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true gutku10/react-test npm run test -- --coverage
+
+after_success:
+  - docker build -t gutku10/multi-client ./client
+  - docker build -t gutku10/multi-nginx ./nginx
+  - docker build -t gutku10/multi-server ./server
+  - docker build -t gutku10/multi-worker ./worker
+  
+  # Login to docker CLI
+  - echo "$DOCKERPASSWORD" | docker login -u "$DOCKERID" --password-stdin
+  
+  # Take those images and push them to docker hub
+  - docker push gutku10/multi-client
+  - docker push gutku10/multi-nginx
+  - docker push gutku10/multi-server
+  - docker push gutku10/multi-worker
