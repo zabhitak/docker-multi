@@ -22,3 +22,17 @@ after_success:
   - docker push gutku10/multi-nginx
   - docker push gutku10/multi-server
   - docker push gutku10/multi-worker
+
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $ACCESSKEY
+  secret_access_key: $SECRETACCESSKEY
+  region: "ap-south-1"
+  app: " multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-054784297534" 
+  bucket_path: "docker-multi"
+  on:
+    branch: master
+  edge: true
