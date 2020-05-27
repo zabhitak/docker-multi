@@ -29,9 +29,9 @@ deploy:
   access_key_id: $ACCESSKEY
   secret_access_key: $SECRETACCESSKEY
   region: "ap-south-1"
-  app: " multi-docker"
+  app: "multi-docker"
   env: "MultiDocker-env"
-  bucket_name: "elasticbeanstalk-ap-south-1-054784297534" 
+  bucket: "elasticbeanstalk-ap-south-1-054784297534" 
   bucket_path: "docker-multi"
   on:
     branch: master
