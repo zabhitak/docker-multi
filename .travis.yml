@@ -24,15 +24,15 @@ after_success:
   - docker push zabhi15/multi-worker
 
 
-deploy:
-  provider: elasticbeanstalk
-  access_key_id: $ACCESSKEY
-  secret_access_key: $SECRETACCESSKEY
-  region: "ap-south-1"
-  app: "multi-docker"
-  env: "MultiDocker-env"
-  bucket: "elasticbeanstalk-ap-south-1-054784297534" 
-  bucket_path: "docker-multi"
-  on:
-    branch: master
-  edge: true
+# deploy:
+#   provider: elasticbeanstalk
+#   access_key_id: $ACCESSKEY
+#   secret_access_key: $SECRETACCESSKEY
+#   region: "ap-south-1"
+#   app: "multi-docker"
+#   env: "MultiDocker-env"
+#   bucket: "elasticbeanstalk-ap-south-1-054784297534" 
+#   bucket_path: "docker-multi"
+#   on:
+#     branch: master
+#   edge: true
